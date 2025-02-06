@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { T } from '@threlte/core';
 	import { Environment, Float, HTML, useGltf, OrbitControls } from '@threlte/extras';
-	import { derived } from 'svelte/store';
 	import { type Mesh, MathUtils } from 'three';
 	import Geometries from './Geometries.svelte';
 	import { RoundedPlaneGeometry } from './RoundedPlaneGeometry';
@@ -16,17 +15,6 @@
 		materials: {};
 	}>('/phone.glb');
 
-	const phoneGeometry = derived(gltf, (gltf) => {
-		if (!gltf) {
-			error = 'Failed to load phone model';
-			return;
-		}
-		if (!gltf.nodes.phone) {
-			error = 'Phone model missing phone node';
-			return;
-		}
-		return gltf.nodes.phone.geometry;
-	});
 
 	const url = 'https://threlte.xyz/';
 </script>
@@ -34,9 +22,7 @@
 <T.PerspectiveCamera
 	position={[0, 0, 50]}
 	fov={35}
-	oncreate={(ref) => {
-		ref.lookAt(0, 0, 0);
-	}}
+	
 	makeDefault
 >
 	<OrbitControls enableDamping target={[0,0,0]} />
@@ -48,6 +34,9 @@
 <T.AmbientLight intensity={0.3} />
 
 <Environment url="/shanghai_1k.hdr" />
+<!-- Debug helpers -->
+<T.AxesHelper args={[5]} />
+<T.GridHelper args={[10, 10]} />
 
 <Float scale={0.7} floatIntensity={5}>
 	<HTML
@@ -62,8 +51,8 @@
 		</div>
 	</HTML>
 
-	{#if $phoneGeometry}
-		<T.Mesh scale={5.65} geometry={$phoneGeometry}>
+	{#if $gltf}
+		<T.Mesh scale={5.65} geometry={$gltf.nodes.phone.geometry}>
 			<T.MeshStandardMaterial color="#FF3F00" metalness={0.9} roughness={0.1} />
 		</T.Mesh>
 	{:else if error}
