@@ -3,7 +3,7 @@
 	import Scene from '$lib/Phone/Scene.svelte';
 </script>
 
-<div>
+<div class='container'>
 	<Canvas>
 		<Scene />
 	</Canvas>
@@ -11,9 +11,21 @@
 
 <style>
 	:global(body) {
+		margin: 0;
+		padding: 0;
 		background-color: black;
+		overflow: hidden;
+		width: 100vw;
+		height: 100vh;
 	}
-	:global(div) {
-		height: 100%;
+
+	.container {
+		width: 100vw;
+		height: 100vh;
+	}
+
+	:global(canvas) {
+		width: 100% !important;
+		height: 100% !important;
 	}
 </style>
