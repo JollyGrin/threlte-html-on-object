@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Canvas } from '@threlte/core';
-	import Scene from './Scene.svelte';
+	import Scene from '$lib/Phone/Scene.svelte';
 </script>
 
 <div>
@@ -10,7 +10,10 @@
 </div>
 
 <style>
-	div {
+	:global(body) {
+		background-color: black;
+	}
+	:global(div) {
 		height: 100%;
 	}
 </style>

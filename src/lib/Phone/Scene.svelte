@@ -11,14 +11,14 @@
 			phone: Mesh;
 		};
 		materials: {};
-	}>('/models/phone/phone.glb');
+	}>('/phone.glb');
 
 	const phoneGeometry = derived(gltf, (gltf) => {
 		if (!gltf) return;
 		return gltf.nodes.phone.geometry;
 	});
 
-	const url = window.origin;
+	const url = 'https://threlte.xyz/';
 </script>
 
 <T.PerspectiveCamera
@@ -34,7 +34,7 @@
 
 <T.AmbientLight intensity={0.3} />
 
-<Environment url="/textures/equirectangular/hdr/shanghai_riverside_1k.hdr" />
+<Environment url="/shanghai_1k.hdr" />
 
 <Float scale={0.7} floatIntensity={5}>
 	<HTML
