@@ -4,7 +4,7 @@
 	import { type Mesh, MathUtils } from 'three';
 	import Geometries from './Geometries.svelte';
 	import { RoundedPlaneGeometry } from './RoundedPlaneGeometry';
-	
+	import { base } from '$app/paths';
 
 	let error = $state('');
 
@@ -13,19 +13,13 @@
 			phone: Mesh;
 		};
 		materials: {};
-	}>('/phone.glb');
-
+	}>(base + '/phone.glb');
 
 	const url = 'https://dean.cafe';
 </script>
 
-<T.PerspectiveCamera
-	position={[0, 0, 50]}
-	fov={35}
-	
-	makeDefault
->
-	<OrbitControls enableDamping target={[0,0,0]} />
+<T.PerspectiveCamera position={[0, 0, 50]} fov={35} makeDefault>
+	<OrbitControls enableDamping target={[0, 0, 0]} />
 </T.PerspectiveCamera>
 
 <!-- Debug lights -->
@@ -33,10 +27,9 @@
 <T.DirectionalLight intensity={0.5} position={[-5, 5, -5]} />
 <T.AmbientLight intensity={0.3} />
 
-<Environment url="/shanghai_1k.hdr" />
+<Environment url={base + '/shanghai_1k.hdr'} />
 
-
-<Float scale={0.7} floatIntensity={5} rotation.y={ -45* MathUtils.DEG2RAD}>
+<Float scale={0.7} floatIntensity={5} rotation.y={-45 * MathUtils.DEG2RAD}>
 	<HTML
 		position={[1.2, 0, 0]}
 		rotation.y={90 * MathUtils.DEG2RAD}

@@ -3,7 +3,7 @@
 	import Scene from '$lib/Phone/Scene.svelte';
 </script>
 
-<div class='container'>
+<div class="container">
 	<Canvas>
 		<Scene />
 	</Canvas>
