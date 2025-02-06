@@ -16,7 +16,7 @@
 	}>('/phone.glb');
 
 
-	const url = 'https://threlte.xyz/';
+	const url = 'https://dean.cafe';
 </script>
 
 <T.PerspectiveCamera
@@ -34,9 +34,7 @@
 <T.AmbientLight intensity={0.3} />
 
 <Environment url="/shanghai_1k.hdr" />
-<!-- Debug helpers -->
-<T.AxesHelper args={[5]} />
-<T.GridHelper args={[10, 10]} />
+
 
 <Float scale={0.7} floatIntensity={5}>
 	<HTML
