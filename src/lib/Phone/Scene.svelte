@@ -36,7 +36,7 @@
 <Environment url="/shanghai_1k.hdr" />
 
 
-<Float scale={0.7} floatIntensity={5}>
+<Float scale={0.7} floatIntensity={5} rotation.y={ -45* MathUtils.DEG2RAD}>
 	<HTML
 		position={[1.2, 0, 0]}
 		rotation.y={90 * MathUtils.DEG2RAD}
